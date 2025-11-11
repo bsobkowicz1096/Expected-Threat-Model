@@ -1,0 +1,26 @@
+# MLflow artifacts and experiment data
+mlruns/
+artifacts/
+
+# Raw & processed datasets
+data/
+!data/README.md
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environments
+.venv/
+venv/
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# Large ML models
+*.pt
+*.pth
+
+# System files
+.DS_Store
+Thumbs.db
