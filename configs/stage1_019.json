@@ -1,0 +1,16 @@
+{
+  "d_model": 512,
+  "num_layers": 12,
+  "nhead": 8,
+  "dropout": 0.1,
+  "lr": 0.0001,
+  "weight_decay": 0.01,
+  "weight_shot": 10.0,
+  "weight_goal": 30.0,
+  "weight_no_goal": 1.0,
+  "n_rollouts": 100,
+  "n_components": 5,
+  "epochs": 15,
+  "batch_size": 64,
+  "run_name": "stage1_nc5_ep15_bs64"
+}

@@ -1,0 +1,16 @@
+{
+  "d_model": 512,
+  "num_layers": 12,
+  "nhead": 8,
+  "dropout": 0.1,
+  "lr": 0.0001,
+  "weight_decay": 0.01,
+  "n_components": 5,
+  "epochs": 10,
+  "batch_size": 32,
+  "n_rollouts": 100,
+  "weight_goal": 25,
+  "weight_shot": 10,
+  "weight_no_goal": 2.5,
+  "run_name": "weights_g25_s10_n2.5"
+}
