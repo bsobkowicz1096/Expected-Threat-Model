@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd C:/Users/barto/GitHub/Expected-Threat-Model && mv best_model.pt artifacts/ && mv beta.pkl isotonic.pkl platt.pkl artifacts/ && mv test_predictions_100rollouts.csv val_predictions_100rollouts.csv artifacts/ && mv calibration_density.png calibration_reliability_all.png possession_sequence.png possession_with_xt.png possession_without_xt.png artifacts/)",
+      "Bash(cd C:/Users/barto/GitHub/Expected-Threat-Model && rm -rf previous_approaches/ veezes/ anaconda_projects/ models/ .ipynb_checkpoints/ && rm -f veezes.ipynb train_and_calibrate_complete.py data_collector.ipynb)",
+      "Bash(cd C:/Users/barto/GitHub/Expected-Threat-Model && rm -rf previous_approaches/ veezes/ models/ .ipynb_checkpoints/ && rm -f veezes.ipynb train_and_calibrate_complete.py data_collector.ipynb)"
+    ]
+  }
+}

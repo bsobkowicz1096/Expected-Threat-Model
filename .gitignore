@@ -21,6 +21,17 @@ venv/
 *.pt
 *.pth
 
+# Jupyter extensions / IDE temp files
+.virtual_documents/
+.jupyter/
+
+# Anaconda project files
+anaconda_projects/
+
+# Calibration / pickle models
+*.pkl
+
 # System files
 .DS_Store
 Thumbs.db
+desktop.ini
