@@ -3,7 +3,8 @@ import json
 import subprocess
 from pathlib import Path
 
-DATA_PATH = "data/sequences_continuous_balanced.parquet"
+TRAIN_PATH = "data/sequences_continuous_train_balanced.parquet"
+VAL_PATH = "data/sequences_continuous_val_natural.parquet"
 VOCAB_PATH = "data/vocab_continuous.json"
 CONFIG_DIR = "configs"
 STAGE = "weights"
@@ -20,7 +21,8 @@ for i, config_file in enumerate(config_files, 1):
     
     cmd = [
         "python", "train_xt_model.py",
-        "--data_path", DATA_PATH,
+        "--train_path", TRAIN_PATH,
+        "--val_path", VAL_PATH,
         "--vocab_path", VOCAB_PATH,
         "--d_model", str(config['d_model']),
         "--num_layers", str(config['num_layers']),
@@ -36,7 +38,8 @@ for i, config_file in enumerate(config_files, 1):
         "--weight_no_goal", str(config['weight_no_goal']),
         "--n_rollouts", str(config['n_rollouts']),
         "--run_name", config['run_name'],
-        "--experiment_name", "Expected_Threat_TOP5_Stage1"
+        "--experiment_name", "Expected_Threat_Optimalization",
+        "--notes", "weights optimization"
     ]
     
     try:

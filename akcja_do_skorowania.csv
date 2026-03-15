@@ -1,0 +1,18 @@
+match_id,possession,team,possession_team,index,type,shot_outcome,player,minute,second,x,y,x_end,y_end
+3857293,57,Uruguay,Uruguay,921,Pass,,Rodrigo Bentancur Colmán,30,44,75.4,18.1,73.6,33.1
+3857293,57,Uruguay,Uruguay,923,Pass,,Federico Santiago Valverde Dipetta,30,45,73.4,35.2,75.3,18.4
+3857293,57,Uruguay,Uruguay,925,Carry,,Rodrigo Bentancur Colmán,30,46,75.3,18.4,75.3,18.4
+3857293,57,Uruguay,Uruguay,926,Pass,,Rodrigo Bentancur Colmán,30,46,75.3,18.4,75.0,5.7
+3857293,57,Uruguay,Uruguay,928,Pass,,Mathías Olivera Miramontes,30,47,77.3,5.4,49.4,22.6
+3857293,57,Uruguay,Uruguay,930,Carry,,Sebastián Coates Nión,30,49,49.4,22.6,44.7,21.0
+3857293,57,Uruguay,Uruguay,931,Pass,,Sebastián Coates Nión,30,51,44.7,21.0,50.8,51.6
+3857293,57,Uruguay,Uruguay,933,Carry,,José María Giménez de Vargas,30,52,50.8,51.6,52.0,50.4
+3857293,57,Uruguay,Uruguay,934,Pass,,José María Giménez de Vargas,30,53,52.0,50.4,60.0,50.9
+3857293,57,Uruguay,Uruguay,936,Carry,,Federico Santiago Valverde Dipetta,30,54,60.0,50.9,66.2,57.0
+3857293,57,Uruguay,Uruguay,937,Pass,,Federico Santiago Valverde Dipetta,30,56,66.2,57.0,84.7,60.9
+3857293,57,Uruguay,Uruguay,939,Carry,,Facundo Pellistri Rebollo,30,57,84.7,60.9,88.4,56.0
+3857293,57,Uruguay,Uruguay,941,Pass,,Facundo Pellistri Rebollo,30,58,88.4,56.0,100.3,54.1
+3857293,57,Uruguay,Uruguay,943,Pass,,Darwin Gabriel Núñez Ribeiro,30,59,100.3,54.3,100.3,40.2
+3857293,57,Uruguay,Uruguay,946,Carry,,Luis Alberto Suárez Díaz,31,0,100.3,40.2,101.1,40.6
+3857293,57,Uruguay,Uruguay,947,Pass,,Luis Alberto Suárez Díaz,31,0,101.1,40.6,110.8,31.2
+3857293,57,Uruguay,Uruguay,950,Shot,Goal,Giorgian Daniel De Arrascaeta Benedetti,31,2,110.8,31.2,120.0,39.5

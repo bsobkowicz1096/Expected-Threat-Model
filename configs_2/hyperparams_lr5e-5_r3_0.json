@@ -1,0 +1,17 @@
+{
+  "d_model": 512,
+  "num_layers": 12,
+  "nhead": 8,
+  "dropout": 0.1,
+  "n_components": 5,
+  "epochs": 12,
+  "batch_size": 32,
+  "weight_decay": 0.01,
+  "n_rollouts": 100,
+  "weight_goal": 15.0,
+  "weight_shot": 3.0,
+  "weight_no_goal": 1.5,
+  "lr": 5e-05,
+  "loss_ratio": 3.0,
+  "run_name": "hyperparams_lr5e-5_r3_0"
+}

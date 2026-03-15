@@ -8,9 +8,9 @@ from pathlib import Path
 def generate_weight_configs():
     """Optimize loss weights around current best"""
     grid = {
-        'weight_goal': [25, 30, 35],
-        'weight_shot': [7, 10, 12],
-        'weight_no_goal': [1.5, 2.0, 2.5]
+        'weight_goal': [5],
+        'weight_shot': [1],
+        'weight_no_goal': [1.0]
     }
     
     # Fixed params (best from testing)

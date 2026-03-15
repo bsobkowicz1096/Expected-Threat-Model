@@ -11,7 +11,6 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
-from sklearn.model_selection import train_test_split
 from sklearn.metrics import roc_auc_score, brier_score_loss
 import mlflow
 
@@ -113,7 +112,7 @@ class FourierPositionEncoder(nn.Module):
 
 
 class ContinuousXTModel(nn.Module):
-    def __init__(self, vocab_size=6, d_model=512, nhead=8, num_layers=12, 
+    def __init__(self, vocab_size=5, d_model=512, nhead=8, num_layers=12, 
                  n_components=5, dropout=0.1):
         super().__init__()
         self.n_components = n_components
@@ -177,7 +176,6 @@ def parse_mdn_params(mdn_params):
 
 def type_loss(type_logits, target_types, weight_config):
     weights = torch.tensor([
-        weight_config["START"],
         weight_config["Pass"],
         weight_config["Shot"],
         weight_config["GOAL"],
@@ -186,7 +184,7 @@ def type_loss(type_logits, target_types, weight_config):
     ]).to(type_logits.device)
     
     return F.cross_entropy(
-        type_logits.reshape(-1, 6),
+        type_logits.reshape(-1, 5),
         target_types.reshape(-1),
         weight=weights,
         ignore_index=-100
@@ -420,22 +418,20 @@ def main(args):
     
     # Load data
     print("Loading data...")
-    df = pd.read_parquet(args.data_path)
+    df_train = pd.read_parquet(args.train_path)
+    df_val = pd.read_parquet(args.val_path)
+    
     with open(args.vocab_path, 'r') as f:
         type_vocab = json.load(f)
     
-    print(f"Total sequences: {len(df):,}")
-    print(f"Goals: {df['goal'].sum()} ({df['goal'].mean()*100:.1f}%)")
-    
-    # Split
-    train_df, val_df = train_test_split(
-        df, test_size=args.val_split, random_state=42, stratify=df['goal']
-    )
-    print(f"Train: {len(train_df):,} | Val: {len(val_df):,}")
+    print(f"\nTrain sequences: {len(df_train):,}")
+    print(f"Train goals: {df_train['goal'].sum()} ({df_train['goal'].mean()*100:.1f}%)")
+    print(f"\nVal sequences: {len(df_val):,}")
+    print(f"Val goals: {df_val['goal'].sum()} ({df_val['goal'].mean()*100:.1f}%)")
     
     # Datasets
-    train_dataset = ContinuousXTDataset(train_df, type_vocab)
-    val_dataset = ContinuousXTDataset(val_df, type_vocab)
+    train_dataset = ContinuousXTDataset(df_train, type_vocab)
+    val_dataset = ContinuousXTDataset(df_val, type_vocab)
     
     train_loader = DataLoader(
         train_dataset, batch_size=args.batch_size, shuffle=True,
@@ -485,6 +481,8 @@ def main(args):
         mlflow.log_param("n_components", args.n_components)
         mlflow.log_param("dropout", args.dropout)
         mlflow.log_param("loss_weights", str(weight_config))
+        if args.notes:
+            mlflow.log_param("notes", args.notes)
         
         # Training loop
         print("\nTraining...")
@@ -536,9 +534,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train xT model with continuous embeddings")
     
     # Data
-    parser.add_argument("--data_path", type=str, required=True, help="Path to parquet file")
+    parser.add_argument("--train_path", type=str, required=True, help="Path to training parquet file")
+    parser.add_argument("--val_path", type=str, required=True, help="Path to validation parquet file")
     parser.add_argument("--vocab_path", type=str, required=True, help="Path to vocab JSON")
-    parser.add_argument("--val_split", type=float, default=0.15, help="Validation split ratio")
     
     # Model architecture
     parser.add_argument("--d_model", type=int, default=512, help="Model dimension")
@@ -564,6 +562,8 @@ if __name__ == "__main__":
     # MLflow
     parser.add_argument("--experiment_name", type=str, default="xT_MDN_Model", help="MLflow experiment name")
     parser.add_argument("--run_name", type=str, default=None, help="MLflow run name")
+    parser.add_argument("--notes", type=str, default=None, help="MLflow notes")
+
     
     args = parser.parse_args()
     main(args)

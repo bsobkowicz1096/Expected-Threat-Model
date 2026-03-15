@@ -9,8 +9,8 @@
   "epochs": 10,
   "batch_size": 32,
   "n_rollouts": 100,
-  "weight_goal": 30,
-  "weight_shot": 12,
-  "weight_no_goal": 2.5,
-  "run_name": "weights_g30_s12_n2.5"
+  "weight_goal": 15,
+  "weight_shot": 3,
+  "weight_no_goal": 1.5,
+  "run_name": "weights_g15_s3_n1.5"
 }
